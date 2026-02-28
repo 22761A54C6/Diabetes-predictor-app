@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diabetes Predictive & Analysis</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="header-content">
+      <h1>Diabetes Predictive & Analysis</h1>
+      <p>AI-powered risk screening with interactive analytics</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <h2>Diabetes Prediction System</h2>
+
+      {% if result %}
+        <div class="alert {{color}}">
+          {{result}}
+        </div>
+      {% endif %}
+
+      {% if explanation %}
+        <div class="explain-box">
+          <h3>Why this result?</h3>
+          <ul>
+            {% for line in explanation %}
+              <li>{{ line }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+      <form action="/predict" method="POST">
+        <div class="grid">
+          <div>
+            <label>Gender</label>
+            <select name="gender">
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Age</label>
+            <input type="number" step="1" name="age" required>
+          </div>
+
+          <div>
+            <label>Hypertension</label>
+            <select name="hypertension">
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Heart Disease</label>
+            <select name="heart_disease">
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Smoking History</label>
+            <select name="smoking_history">
+              <option>never</option>
+              <option>former</option>
+              <option>current</option>
+              <option>ever</option>
+              <option>not current</option>
+            </select>
+          </div>
+
+          <div>
+            <label>BMI</label>
+            <input type="number" step="0.1" name="bmi" required>
+          </div>
+
+          <div>
+            <label>HbA1c Level</label>
+            <input type="number" step="0.1" name="hba1c" required>
+          </div>
+
+          <div>
+            <label>Blood Glucose Level</label>
+            <input type="number" step="1" name="glucose" required>
+          </div>
+        </div>
+
+        <button type="submit">Run Prediction</button>
+      </form>
+
+      <!-- Embedded Power BI Dashboard -->
+      <section class="dashboard-section">
+        <h2>Interactive Analytics Dashboard</h2>
+        <iframe 
+            width="100%" 
+            height="500"
+            src="https://app.powerbi.com/view?r=eyJrIjoiOGVkYTBhOGUtMDBhNS00MDBlLTk3NTAtYjgxZGMzNzY3YmNkIiwidCI6ImYwYTBjNzJhLThkZTMtNDViZS1hNDg1LWRlYzk1MzlkYTA4ZSJ9" 
+            frameborder="0" 
+            allowFullScreen="true">
+        </iframe>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Diabetes Predictive & Analysis</p>
+  </footer>
+
+</body>
+</html>

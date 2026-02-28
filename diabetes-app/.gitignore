@@ -1,0 +1,10 @@
+venv/
+env/
+.venv/
+pyvenv.cfg
+__pycache__/
+*.pyc
+*.pyo
+data_setfp.csv
+*.egg-info/
+.DS_Store
